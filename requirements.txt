@@ -4,6 +4,7 @@ Brotli==1.0.9
 certifi==2020.12.5
 CFGraph==0.2.1
 chardet==4.0.0
+chart-studio==1.1.0
 click==7.1.2
 dash==1.17.0
 dash-core-components==1.13.0
@@ -26,7 +27,7 @@ numpy==1.19.4
 oauthlib==3.1.0
 pandas==1.1.4
 pbr==5.5.1
-plotly==4.13.0
+plotly==4.14.3
 PyJSG==0.11.6
 PyJWT==1.7.1
 pyparsing==2.4.7
@@ -47,6 +48,6 @@ sparql-slurper==0.3.4
 sparqlslurper==0.4.1
 SPARQLWrapper==1.8.5
 tqdm==4.54.1
-urllib3==1.26.2
+urllib3==1.26.3
 Werkzeug==1.0.1
 wikidataintegrator==0.8.3
