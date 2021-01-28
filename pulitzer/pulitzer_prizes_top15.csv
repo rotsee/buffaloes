@@ -1,0 +1,182 @@
+,field_category,field_publication,total
+0,Beat Reporting,Los Angeles Times,1
+1,Beat Reporting,Newsday,1
+2,Beat Reporting,The Baltimore Sun,1
+3,Beat Reporting,The Boston Globe,1
+4,Beat Reporting,The New York Times,4
+5,Beat Reporting,The Seattle Times,1
+6,Beat Reporting,The Wall Street Journal,3
+7,Beat Reporting,The Washington Post,1
+8,Breaking News Photography,Associated Press,4
+9,Breaking News Photography,St. Louis Post-Dispatch,1
+10,Breaking News Photography,The Miami Herald,1
+11,Breaking News Photography,The New York Times,3
+12,Breaking News Photography,The Washington Post,1
+13,Breaking News Reporting,Los Angeles Times,3
+14,Breaking News Reporting,The Boston Globe,1
+15,Breaking News Reporting,The Miami Herald,1
+16,Breaking News Reporting,The New York Times,1
+17,Breaking News Reporting,The Seattle Times,2
+18,Breaking News Reporting,The Wall Street Journal,1
+19,Breaking News Reporting,The Washington Post,1
+20,Commentary,Chicago Tribune,2
+21,Commentary,Los Angeles Times,1
+22,Commentary,New York Daily News,3
+23,Commentary,Newsday,2
+24,Commentary,St. Louis Post-Dispatch,1
+25,Commentary,The Boston Globe,3
+26,Commentary,The Miami Herald,3
+27,Commentary,The New York Times,10
+28,Commentary,The Wall Street Journal,5
+29,Commentary,The Washington Post,7
+30,Correspondence,Associated Press,2
+31,Correspondence,Chicago Daily News,2
+32,Correspondence,Chicago Tribune,1
+33,Correspondence,St. Louis Post-Dispatch,1
+34,Correspondence,The New York Times,8
+35,Criticism,Chicago Tribune,2
+36,Criticism,Los Angeles Times,7
+37,Criticism,Newsday,1
+38,Criticism,The Boston Globe,6
+39,Criticism,The New York Times,6
+40,Criticism,The Philadelphia Inquirer,1
+41,Criticism,The Wall Street Journal,2
+42,Criticism,The Washington Post,11
+43,Criticism or Commentary,Chicago Daily News,1
+44,Criticism or Commentary,St. Louis Post-Dispatch,2
+45,Criticism or Commentary,The New York Times,2
+46,Editorial Cartooning,Chicago Daily News,3
+47,Editorial Cartooning,Chicago Tribune,4
+48,Editorial Cartooning,Los Angeles Times,3
+49,Editorial Cartooning,New York Daily News,1
+50,Editorial Cartooning,Newsday,2
+51,Editorial Cartooning,St. Louis Post-Dispatch,3
+52,Editorial Cartooning,The Baltimore Sun,3
+53,Editorial Cartooning,The Boston Globe,2
+54,Editorial Cartooning,The Miami Herald,1
+55,Editorial Cartooning,The New York Times,1
+56,Editorial Cartooning,The Philadelphia Inquirer,1
+57,Editorial Cartooning,The Washington Post,1
+58,Editorial Writing,Chicago Tribune,4
+59,Editorial Writing,Los Angeles Times,3
+60,Editorial Writing,New York Daily News,3
+61,Editorial Writing,St. Louis Post-Dispatch,2
+62,Editorial Writing,The Baltimore Sun,1
+63,Editorial Writing,The Boston Globe,1
+64,Editorial Writing,The Miami Herald,1
+65,Editorial Writing,The New York Times,4
+66,Editorial Writing,The Wall Street Journal,4
+67,Editorial Writing,The Washington Post,3
+68,Explanatory Journalism,Chicago Tribune,2
+69,Explanatory Journalism,Newsday,1
+70,Explanatory Journalism,The New York Times,1
+71,Explanatory Journalism,The Philadelphia Inquirer,1
+72,Explanatory Journalism,The Wall Street Journal,2
+73,Explanatory Journalism,The Washington Post,2
+74,Explanatory Reporting,Chicago Tribune,2
+75,Explanatory Reporting,Los Angeles Times,2
+76,Explanatory Reporting,The Boston Globe,1
+77,Explanatory Reporting,The New York Times,6
+78,Explanatory Reporting,The Wall Street Journal,2
+79,Explanatory Reporting,The Washington Post,3
+80,Feature Photography,Associated Press,7
+81,Feature Photography,Chicago Tribune,1
+82,Feature Photography,Los Angeles Times,4
+83,Feature Photography,The Boston Globe,2
+84,Feature Photography,The Miami Herald,1
+85,Feature Photography,The New York Times,4
+86,Feature Photography,The Philadelphia Inquirer,2
+87,Feature Photography,The Washington Post,3
+88,Feature Writing,Associated Press,1
+89,Feature Writing,Chicago Tribune,1
+90,Feature Writing,Los Angeles Times,4
+91,Feature Writing,The Baltimore Sun,2
+92,Feature Writing,The Miami Herald,1
+93,Feature Writing,The New York Times,7
+94,Feature Writing,The Philadelphia Inquirer,2
+95,Feature Writing,The Seattle Times,1
+96,Feature Writing,The Wall Street Journal,2
+97,Feature Writing,The Washington Post,3
+98,General News Reporting,The Miami Herald,1
+99,International Reporting,Associated Press,5
+100,International Reporting,Chicago Tribune,2
+101,International Reporting,Los Angeles Times,3
+102,International Reporting,New York Daily News,1
+103,International Reporting,Newsday,4
+104,International Reporting,The Baltimore Sun,2
+105,International Reporting,The Miami Herald,1
+106,International Reporting,The New York Times,25
+107,International Reporting,The Philadelphia Inquirer,1
+108,International Reporting,The Wall Street Journal,5
+109,International Reporting,The Washington Post,8
+110,Investigative Reporting,Associated Press,1
+111,Investigative Reporting,Chicago Tribune,2
+112,Investigative Reporting,Los Angeles Times,2
+113,Investigative Reporting,Newsday,1
+114,Investigative Reporting,The Baltimore Sun,1
+115,Investigative Reporting,The Miami Herald,1
+116,Investigative Reporting,The New York Times,6
+117,Investigative Reporting,The Philadelphia Inquirer,3
+118,Investigative Reporting,The Seattle Times,2
+119,Investigative Reporting,The Wall Street Journal,1
+120,Investigative Reporting,The Washington Post,3
+121,Local General or Spot News Reporting,Chicago Tribune,1
+122,Local General or Spot News Reporting,Los Angeles Times,1
+123,Local General or Spot News Reporting,Newsday,1
+124,Local General or Spot News Reporting,The Philadelphia Inquirer,1
+125,Local General or Spot News Reporting,The Wall Street Journal,1
+126,Local Investigative Specialized Reporting,Chicago Tribune,2
+127,Local Investigative Specialized Reporting,New York Daily News,1
+128,Local Investigative Specialized Reporting,The Boston Globe,3
+129,Local Investigative Specialized Reporting,The New York Times,1
+130,Local Investigative Specialized Reporting,The Seattle Times,1
+131,Local Investigative Specialized Reporting,The Washington Post,1
+132,Local Reporting,The Baltimore Sun,1
+133,Local Reporting,The Miami Herald,1
+134,Local Reporting,The New York Times,1
+135,Local Reporting - No edition time,Chicago Tribune,1
+136,Local Reporting - No edition time,The New York Times,1
+137,National Reporting,Associated Press,3
+138,National Reporting,Chicago Daily News,1
+139,National Reporting,Los Angeles Times,3
+140,National Reporting,The Boston Globe,2
+141,National Reporting,The New York Times,12
+142,National Reporting,The Philadelphia Inquirer,4
+143,National Reporting,The Seattle Times,3
+144,National Reporting,The Wall Street Journal,8
+145,National Reporting,The Washington Post,6
+146,Photography,Associated Press,7
+147,Photography,Los Angeles Times,1
+148,Photography,New York Daily News,1
+149,Public Service,Associated Press,1
+150,Public Service,Chicago Daily News,2
+151,Public Service,Los Angeles Times,6
+152,Public Service,Newsday,3
+153,Public Service,St. Louis Post-Dispatch,4
+154,Public Service,The Boston Globe,3
+155,Public Service,The Miami Herald,1
+156,Public Service,The New York Times,5
+157,Public Service,The Philadelphia Inquirer,3
+158,Public Service,The Wall Street Journal,1
+159,Public Service,The Washington Post,5
+160,Reporting,Associated Press,2
+161,Reporting,Chicago Daily News,2
+162,Reporting,St. Louis Post-Dispatch,2
+163,Reporting,The New York Times,4
+164,Specialized Reporting,The New York Times,1
+165,Specialized Reporting,The Wall Street Journal,1
+166,Spot News Photography,Associated Press,10
+167,Spot News Photography,The Boston Globe,1
+168,Spot News Photography,The Miami Herald,1
+169,Spot News Photography,The Seattle Times,1
+170,Spot News Photography,The Washington Post,1
+171,Spot News Reporting,Los Angeles Times,2
+172,Spot News Reporting,Newsday,2
+173,Spot News Reporting,The Miami Herald,1
+174,Spot News Reporting,The New York Times,2
+175,Telegraphic Reporting - International,Associated Press,3
+176,Telegraphic Reporting - International,The Baltimore Sun,1
+177,Telegraphic Reporting - National,St. Louis Post-Dispatch,1
+178,Telegraphic Reporting - National,The Baltimore Sun,1
+179,Telegraphic Reporting - National,The New York Times,2
+180,Telegraphic Reporting - National,The Washington Post,1

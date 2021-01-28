@@ -7,25 +7,33 @@ from dash.dependencies import Input, Output
 
 from app import app, server
 
-stories = ['top_co2_emitters']
+stories = ['top_co2_emitters', 'pulitzer']
 
 modules = [importlib.import_module(i + '.' + i) for i in stories]
+
+
+def html_links():
+    links = []
+    for i in stories:
+        links.append(dcc.Link(i, href='/' + i))
+        links.append(html.Br())
+
+    return html.Div(links)
+
 
 app.layout = html.Div([
     # represents the URL bar, doesn't render anything
     dcc.Location(id='url', refresh=False),
 
-
-    dcc.Link('top_co2_emitters', href='/top_co2_emitters'),
-    html.Br(),
+    html_links(),
 
     # content will be rendered in this element
     html.Div(id='page-content')
 ])
 
 
-@app.callback(Output('page-content', 'children'),
-              Input('url', 'pathname'))
+@ app.callback(Output('page-content', 'children'),
+               Input('url', 'pathname'))
 def display_page(pathname):
     if pathname == '/':
         return modules[0].layout
