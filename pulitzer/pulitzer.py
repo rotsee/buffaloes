@@ -2,12 +2,12 @@ import os
 
 import dash_core_components as dcc
 import dash_html_components as html
+import lib.html_helper as ht
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 from app import app
 from dash.dependencies import Input, Output
-from lib.html_helper import *
 
 app_dir = os.path.basename(os.path.dirname(__file__))
 
@@ -150,30 +150,27 @@ def html_radio(id_suffix):
 top_pub = list(df_top15.field_category.unique())
 options = [{'label': i, 'value': i} for i in top_pub]
 
-layout = html.Div(children=[
-    html_title('Who wins the Pulitzer prizes in journalism?'),
-    html_body('pulitzer',
-              [fig_sankey(),
+layout = ht.layout(app_dir,
+                   'Who wins the Pulitzer prizes in journalism?',
+                   [fig_sankey(),
 
-               html.Div([html_radio('scatter'),
-                         dcc.Tabs([
-                             dcc.Tab(label='By publication year', children=[dcc.Graph(
-                                     id='scatter_1', figure=fig_scatter(x='field_year', y='field_publication'))]),
-                             dcc.Tab(label='By publication size', children=[dcc.Graph(
-                                     id='scatter_2', figure=fig_scatter(x='total', y='field_publication'))]),
-                             dcc.Tab(label='By category year', children=[dcc.Graph(
-                                     id='scatter_3', figure=fig_scatter(x='field_year', y='field_category'))]),
-                             dcc.Tab(label='By category size', children=[dcc.Graph(
-                                     id='scatter_4', figure=fig_scatter(x='total', y='field_category'))])
-                         ])]),
+                    html.Div([html_radio('scatter'),
+                              dcc.Tabs([
+                                  dcc.Tab(label='By publication year', children=[dcc.Graph(
+                                      id='scatter_1', figure=fig_scatter(x='field_year', y='field_publication'))]),
+                                  dcc.Tab(label='By publication size', children=[dcc.Graph(
+                                      id='scatter_2', figure=fig_scatter(x='total', y='field_publication'))]),
+                                  dcc.Tab(label='By category year', children=[dcc.Graph(
+                                      id='scatter_3', figure=fig_scatter(x='field_year', y='field_category'))]),
+                                  dcc.Tab(label='By category size', children=[dcc.Graph(
+                                      id='scatter_4', figure=fig_scatter(x='total', y='field_category'))])
+                              ])]),
 
 
-               html.Div([html_radio('bar_size'),
-                         dcc.Graph(id='bar_size', figure=fig_bar_size())]),
+                    html.Div([html_radio('bar_size'),
+                              dcc.Graph(id='bar_size', figure=fig_bar_size())]),
 
-               fig_pie()])
-
-])
+                    fig_pie()])
 
 
 @ app.callback(

@@ -1,8 +1,13 @@
-import dash_html_components as html
-from lib.html_helper import *
+import os
 
-layout = html.Div(children=[
-    html_title('Top co2 emitters'),
-    html_body('top_co2_emitters',
-              [html.Embed(src='https://chart-studio.plotly.com/~papanash/9.embed', height="1000", width="100%")])
-])
+import dash_html_components as html
+import lib.html_helper as ht
+
+app_dir = os.path.basename(os.path.dirname(__file__))
+
+
+layout = ht.layout(app_dir,
+                   'Top co2 emitters',
+                   [html.Embed(
+                       src='https://chart-studio.plotly.com/~papanash/9.embed',
+                       height="1000", width="100%")])
