@@ -10,11 +10,6 @@ from dash.dependencies import Input, Output
 from lib.html_helper import *
 
 app_dir = os.path.basename(os.path.dirname(__file__))
-intro_file = app_dir + '/intro.md'
-conclusion_file = app_dir + '/conclusion.md'
-
-intro_text = """{}""".format(open(intro_file).read())
-conclusion_text = """{}""".format(open(conclusion_file).read())
 
 csv_file = app_dir + '/pulitzer_prizes_adjusted.csv'
 
