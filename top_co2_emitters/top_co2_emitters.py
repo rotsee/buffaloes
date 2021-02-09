@@ -13,19 +13,13 @@ app_dir = os.path.basename(os.path.dirname(__file__))
 csv_file = app_dir + '/co2_emissions.csv'
 df_co2 = pd.read_csv(csv_file, index_col=0)
 
-top = 10
-top_2019_emissions = df_co2[(df_co2.Year == 2019)].groupby('Name')[
-    'Name', 'Emissions'].sum().sort_values('Emissions', ascending=False).head(top)
-df_top_2019_emissions = df_co2[df_co2.Name.isin(list(top_2019_emissions.index))].groupby(
-    ['Name', 'Year'])['Emissions', 'Excess'].sum().reset_index()
 
-top_2019_excess = df_co2[(df_co2.Year == 2019)].groupby('Name')[
-    'Name', 'Excess'].sum().sort_values('Excess', ascending=False).head(top)
-df_top_2019_excess = df_co2[df_co2.Name.isin(list(top_2019_excess.index))].groupby(
-    ['Name', 'Year'])['Emissions', 'Excess'].sum().reset_index()
-
-df_top_by_kommun = df_co2.groupby(['Län', 'Year'])[
-    'Emissions', 'Excess'].sum().reset_index()
+def top_emissions_by_measure(measure, top=10, year=2019):
+    df = df_co2[(df_co2.Year == year)].groupby(measure)[
+        measure, 'Emissions'].sum().sort_values('Emissions', ascending=False).head(top)
+    df = df_co2[df_co2[measure].isin(list(df.index))].groupby(
+        [measure, 'Year']).sum().reset_index()
+    return df
 
 
 def fig_line(df, y, category):
@@ -33,27 +27,21 @@ def fig_line(df, y, category):
                    hover_name=category, hover_data=df.columns)
 
 
-def fig_top(measure):
-    if measure == 'Emissions':
-        title = 'Top emitters of 2019'
-        df = df_top_2019_emissions
-        category = 'Name'
-    if measure == 'Excess':
-        df = df_top_2019_excess
-        category = 'Name'
-    if measure == 'Region':
-        title = 'Top regions'
-        df = df_top_by_kommun
-        category = 'Län'
+def fig_emission_excess(measure):
+    suffix = '(top emitters of 2019)'
+    if measure in ['Name', 'Län', 'Kommun', 'Bransch']:
+        title = measure + ' ' + suffix
+        df = top_emissions_by_measure(measure)
+        category = measure
 
-    fig1 = fig_line(df, 'Emissions', category)
-    fig2 = fig_line(df, 'Excess', category)
+        fig1 = fig_line(df, 'Emissions', category)
+        fig2 = fig_line(df, 'Excess', category)
 
     # dcc.Graph(id='fig_' + measure + y, figure=fig)
-    return html.Div([dcc.Graph(figure=fig1), dcc.Graph(figure=fig2)])
+    return html.Div([html.H2(title), dcc.Graph(figure=fig1), dcc.Graph(figure=fig2)])
 
 
 layout = ht.layout(app_dir,
                    'Top co2 emitters',
-                   [fig_top('Emissions'),
-                    fig_top('Region')])
+                   [fig_emission_excess('Name'),
+                    fig_emission_excess('Län')])
