@@ -33,7 +33,7 @@ PyJSG==0.11.6
 PyJWT==1.7.1
 pyparsing==2.4.7
 PyShEx==0.7.20
-PyShExC==0.7.0
+PyShExC==0.8.3
 python-dateutil==2.8.1
 pytz==2020.4
 rdflib==5.0.0

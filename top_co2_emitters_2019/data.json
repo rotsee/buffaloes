@@ -1,0 +1,254 @@
+{
+    "data": [
+        {
+            "meta": {
+                "columnNames": {
+                    "x": "name",
+                    "y": "2019",
+                    "marker": {
+                        "color": "F"
+                    }
+                }
+            },
+            "name": "top 20",
+            "type": "bar",
+            "xsrc": "papanash:8:c582b3",
+            "x": [
+                "SSAB inkl Lulekraft",
+                "Cementa",
+                "Preem",
+                "LKAB",
+                "Borealis",
+                "Nordkalk m fl",
+                "Stockholm Exergi",
+                "ST1",
+                "Vattenfall Uppsala",
+                "Tekniska Verken Linköping",
+                "Boliden Rönnskärsverken",
+                "SYSAV",
+                "Mälarenergi",
+                "SSAB Borlänge",
+                "Eon Värme Norrköping",
+                "Göteborg Energi",
+                "Renova Avfall Gbg",
+                "Vargön Alloys",
+                "Höganäs",
+                "Eon Värme Heleneholm"
+            ],
+            "ysrc": "papanash:8:695649",
+            "y": [
+                "5230",
+                "2024",
+                "1680",
+                "668",
+                "632",
+                "592",
+                "588",
+                "456",
+                "286",
+                "285",
+                "271",
+                "255",
+                "241",
+                "227",
+                "223",
+                "207",
+                "200",
+                "182",
+                "173",
+                "83"
+            ],
+            "xaxis": "x",
+            "marker": {
+                "cauto": false,
+                "colorsrc": "papanash:8:f60362",
+                "color": [
+                    "red",
+                    "orange",
+                    "blue",
+                    "blue",
+                    "blue",
+                    "blue",
+                    "blue",
+                    "blue",
+                    "blue",
+                    "blue",
+                    "blue",
+                    "blue",
+                    "blue",
+                    "blue",
+                    "blue",
+                    "blue",
+                    "blue",
+                    "blue",
+                    "blue",
+                    "blue"
+                ]
+            },
+            "orientation": "v",
+            "autocolorscale": false
+        },
+        {
+            "meta": {
+                "columnNames": {
+                    "x": "C",
+                    "y": "2019",
+                    "text": "",
+                    "marker": {
+                        "color": "D"
+                    },
+                    "textposition": ""
+                }
+            },
+            "name": "Top 2 vs resast of top 20",
+            "type": "bar",
+            "xsrc": "papanash:10:439954",
+            "x": [
+                "SSAB + Cementa",
+                "SSAB + Cementa",
+                "3-20"
+            ],
+            "ysrc": "papanash:10:af5485",
+            "y": [
+                "5230",
+                "2024",
+                "7249"
+            ],
+            "xaxis": "x2",
+            "yaxis": "y2",
+            "marker": {
+                "cauto": true,
+                "opacity": 1,
+                "colorsrc": "papanash:10:f45e6e",
+                "color": [
+                    "red",
+                    "orange",
+                    "blue"
+                ],
+                "reversescale": false
+            },
+            "cliponaxis": true,
+            "orientation": "v",
+            "textposition": "auto",
+            "constraintext": "both",
+            "autocolorscale": false
+        },
+        {
+            "meta": {
+                "columnNames": {
+                    "x": "verksamhet",
+                    "y": "2019",
+                    "labels": "verksamhet",
+                    "values": "2019"
+                }
+            },
+            "mode": "lines",
+            "type": "bar",
+            "xsrc": "papanash:8:0aeec8",
+            "x": [
+                "ståltillverkning från malm",
+                "cement",
+                "oljeraffinering",
+                "järnmalme/pellets",
+                "Kemi (plast)",
+                "kalkbränning",
+                "el och värme",
+                "oljeraffinering",
+                "el och värme",
+                "el och värme",
+                "metallproduktion, återvinning",
+                "el och värme",
+                "el och värme",
+                "stål från skrot",
+                "el och värme",
+                "el och värme",
+                "el och värme",
+                "produktion av legeringämnen",
+                "Järnpulverproduktion med fossilgas",
+                "el och värme"
+            ],
+            "ysrc": "papanash:8:695649",
+            "y": [
+                "5230",
+                "2024",
+                "1680",
+                "668",
+                "632",
+                "592",
+                "588",
+                "456",
+                "286",
+                "285",
+                "271",
+                "255",
+                "241",
+                "227",
+                "223",
+                "207",
+                "200",
+                "182",
+                "173",
+                "83"
+            ],
+            "xaxis": "x3",
+            "yaxis": "y3",
+            "domain": {
+                "x": [
+                    0,
+                    0.5
+                ],
+                "y": [
+                    0,
+                    0.375
+                ]
+            },
+            "labelssrc": "papanash:8:0aeec8",
+            "labels": [
+                "ståltillverkning från malm",
+                "cement",
+                "oljeraffinering",
+                "järnmalme/pellets",
+                "Kemi (plast)",
+                "kalkbränning",
+                "el och värme",
+                "oljeraffinering",
+                "el och värme",
+                "el och värme",
+                "metallproduktion, återvinning",
+                "el och värme",
+                "el och värme",
+                "stål från skrot",
+                "el och värme",
+                "el och värme",
+                "el och värme",
+                "produktion av legeringämnen",
+                "Järnpulverproduktion med fossilgas",
+                "el och värme"
+            ],
+            "valuessrc": "papanash:8:695649",
+            "values": [
+                "5230",
+                "2024",
+                "1680",
+                "668",
+                "632",
+                "592",
+                "588",
+                "456",
+                "286",
+                "285",
+                "271",
+                "255",
+                "241",
+                "227",
+                "223",
+                "207",
+                "200",
+                "182",
+                "173",
+                "83"
+            ],
+            "orientation": "v"
+        }
+    ]
+}
