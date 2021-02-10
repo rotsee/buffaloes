@@ -1,5 +1,6 @@
 import os
 
+import dash
 import dash_core_components as dcc
 import dash_html_components as html
 import lib.html_helper as ht
@@ -17,7 +18,7 @@ df_co2 = pd.read_csv(csv_file, index_col=0)
 
 def top_emissions_by_measure(measure, top=10, year=2019):
     df = df_co2[(df_co2.Year == year)].groupby(measure)[
-        measure, 'Emissions'].sum().sort_values('Emissions', ascending=False).head(top)
+        [measure, 'Emissions']].sum().sort_values('Emissions', ascending=False).head(top)
     df = df_co2[df_co2[measure].isin(list(df.index))].groupby(
         [measure, 'Year']).sum().reset_index()
     return df
@@ -69,4 +70,6 @@ layout = ht.layout(app_dir,
     Output('div-emission-excess', 'children'),
     Input('dropdown-emission-excess', 'value'))
 def update_emission_excess(selected_value):
+    if selected_value is None:
+        return dash.no_update
     return get_emission_excess(selected_value)
