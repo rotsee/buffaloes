@@ -6,6 +6,7 @@ import lib.html_helper as ht
 import numpy as np
 import pandas as pd
 import plotly.express as px
+from app import app
 from dash.dependencies import Input, Output
 
 app_dir = os.path.basename(os.path.dirname(__file__))
@@ -22,26 +23,50 @@ def top_emissions_by_measure(measure, top=10, year=2019):
     return df
 
 
-def fig_line(df, y, category):
-    return px.line(df, x=df.Year, y=df[y], color=category,
-                   hover_name=category, hover_data=df.columns)
+def dcc_dropdown(id_suffix, options, default_value):
+    return dcc.Dropdown(
+        id='dropdown-' + id_suffix,
+        options=[{'label': i, 'value': i}
+                 for i in options],
+        placeholder='Select a ' + 'measure',
+        value=default_value,
+        style={'width': '50%'})
+    # , 'display': 'flex','align - items': 'center', 'justify - content': 'center'})
 
 
-def fig_emission_excess(measure):
+def fig_line(df, y, color, **kw):
+    return px.line(df, x=df.Year, y=df[y], color=color,
+                   hover_name=color, hover_data=df.columns, **kw)
+
+
+def get_emission_excess(measure):
+    measures = ['Name', 'Län', 'Kommun', 'Bransch']
+    if measure is None:
+        measure = measures[0]
     suffix = '(top emitters of 2019)'
-    if measure in ['Name', 'Län', 'Kommun', 'Bransch']:
-        title = measure + ' ' + suffix
-        df = top_emissions_by_measure(measure)
-        category = measure
 
-        fig1 = fig_line(df, 'Emissions', category)
-        fig2 = fig_line(df, 'Excess', category)
+    title = measure + ' ' + suffix
+    df = top_emissions_by_measure(measure)
 
-    # dcc.Graph(id='fig_' + measure + y, figure=fig)
-    return html.Div([html.H2(title), dcc.Graph(figure=fig1), dcc.Graph(figure=fig2)])
+    fig1 = fig_line(df, 'Emissions', measure, labels={
+                    'Emissions': 'Emissions (tons)'})
+    fig2 = fig_line(df, 'Excess', measure)
+
+    return html.Div(id='div-emission-excess',
+                    children=[
+                        dcc_dropdown('emission-excess',
+                                     measures, measure),
+                        dcc.Graph(id='fig_emissions', figure=fig1),
+                        dcc.Graph(id='fig_excess', figure=fig2)])
 
 
 layout = ht.layout(app_dir,
                    'Top co2 emitters',
-                   [fig_emission_excess('Name'),
-                    fig_emission_excess('Län')])
+                   [get_emission_excess('Name')])
+
+
+@ app.callback(
+    Output('div-emission-excess', 'children'),
+    Input('dropdown-emission-excess', 'value'))
+def update_emission_excess(selected_value):
+    return get_emission_excess(selected_value)
