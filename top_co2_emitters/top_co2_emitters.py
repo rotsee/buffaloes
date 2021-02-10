@@ -85,7 +85,7 @@ def get_emission_pecentage_change(measure, start_year=2009, end_year=2019):
 
     fig = fig_bar(df, measure)
 
-    return html.Div([html.H2('Percentage change of all län from 2009 to 2019'),
+    return html.Div([html.H2('Percentage change of all Län from 2009 to 2019'),
                      dcc.Graph(figure=fig)])
 
 
