@@ -24,6 +24,10 @@ def top_emissions_by_measure(measure, top=10, year=2019):
     return df
 
 
+def percentage_change(col1, col2):
+    return ((col2 - col1) / col1) * 100
+
+
 def dcc_dropdown(id_suffix, options, default_value):
     return dcc.Dropdown(
         id='dropdown-' + id_suffix,
@@ -38,6 +42,14 @@ def dcc_dropdown(id_suffix, options, default_value):
 def fig_line(df, y, color, **kw):
     return px.line(df, x=df.Year, y=df[y], color=color,
                    hover_name=color, hover_data=df.columns, **kw)
+
+
+def fig_bar(df, y):
+    f = px.bar(df, y=y, x='percentage_change', orientation='h',
+               labels={'percentage_change': 'percentage_change (2009 -> 2019)'})
+
+    f.update_layout(yaxis={'categoryorder': 'total descending'}, height=800)
+    return f
 
 
 def get_emission_excess(measure):
@@ -61,9 +73,26 @@ def get_emission_excess(measure):
                         dcc.Graph(id='fig_excess', figure=fig2)])
 
 
+def get_emission_pecentage_change(measure, start_year=2009, end_year=2019):
+    df = df_co2[(df_co2.Year == end_year) | (df_co2.Year == start_year)
+                ][[measure, 'Emissions', 'Year']]
+
+    df = df.groupby([measure, 'Year']).sum().unstack('Year').reset_index()
+    df.columns = df.columns.droplevel()
+    df.columns = [measure, '2009', '2019']
+
+    df['percentage_change'] = percentage_change(df['2009'], df['2019'])
+
+    fig = fig_bar(df, measure)
+
+    return html.Div([html.H2('Percentage change of all län from 2009 to 2019'),
+                     dcc.Graph(figure=fig)])
+
+
 layout = ht.layout(app_dir,
                    'Top co2 emitters',
-                   [get_emission_excess('Name')])
+                   [get_emission_excess('Name'),
+                    get_emission_pecentage_change('Län')])
 
 
 @ app.callback(
