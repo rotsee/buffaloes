@@ -15,8 +15,13 @@ app_dir = os.path.basename(os.path.dirname(__file__))
 csv_file = app_dir + '/co2_emissions.csv'
 df_co2 = pd.read_csv(csv_file, index_col=0)
 
+top = 10
+start_year = 2009
+end_year = 2019
+measures = ['Name', 'Län', 'Kommun']
 
-def top_emissions_by_measure(measure, top=10, year=2019):
+
+def emission_excess(measure, top=top, year=end_year):
     df = df_co2[(df_co2.Year == year)].groupby(measure)[
         [measure, 'Emissions']].sum().sort_values('Emissions', ascending=False).head(top)
     df = df_co2[df_co2[measure].isin(list(df.index))].groupby(
@@ -24,75 +29,62 @@ def top_emissions_by_measure(measure, top=10, year=2019):
     return df
 
 
-def percentage_change(col1, col2):
-    return ((col2 - col1) / col1) * 100
-
-
-def dcc_dropdown(id_suffix, options, default_value):
-    return dcc.Dropdown(
-        id='dropdown-' + id_suffix,
-        options=[{'label': i, 'value': i}
-                 for i in options],
-        placeholder='Select a ' + 'measure',
-        value=default_value,
-        style={'width': '50%'})
-    # , 'display': 'flex','align - items': 'center', 'justify - content': 'center'})
-
-
-def fig_line(df, y, color, **kw):
-    return px.line(df, x=df.Year, y=df[y], color=color,
-                   hover_name=color, hover_data=df.columns, **kw)
-
-
-def fig_bar(df, y):
-    f = px.bar(df, y=y, x='percentage_change', orientation='h',
-               labels={'percentage_change': 'percentage_change (2009 -> 2019)'})
-
-    f.update_layout(yaxis={'categoryorder': 'total descending'}, height=800)
-    return f
-
-
-def get_emission_excess(measure):
-    measures = ['Name', 'Län', 'Kommun', 'Bransch']
-    if measure is None:
-        measure = measures[0]
-    suffix = '(top emitters of 2019)'
-
-    title = measure + ' ' + suffix
-    df = top_emissions_by_measure(measure)
-
-    fig1 = fig_line(df, 'Emissions', measure,
-                    labels={'Emissions': 'Emissions (tons)', 'Excess': 'Excess/Deficit'})
-    fig2 = fig_line(df, 'Excess', measure)
-
-    return html.Div(id='div-emission-excess',
-                    children=[
-                        dcc_dropdown('emission-excess',
-                                     measures, measure),
-                        dcc.Graph(id='fig_emissions', figure=fig1),
-                        dcc.Graph(id='fig_excess', figure=fig2)])
-
-
-def get_emission_pecentage_change(measure, start_year=2009, end_year=2019):
+def emissions_pecentage_change(measure, top=top, start_year=start_year, end_year=end_year):
     df = df_co2[(df_co2.Year == end_year) | (df_co2.Year == start_year)
                 ][[measure, 'Emissions', 'Year']]
 
     df = df.groupby([measure, 'Year']).sum().unstack('Year').reset_index()
     df.columns = df.columns.droplevel()
-    df.columns = [measure, '2009', '2019']
+    df.columns = [measure, start_year, end_year]
+    df = df[(df[start_year] != 0) & (df[end_year] != 0) & (
+        df[start_year].notna()) & (df[end_year].notna())]
 
-    df['percentage_change'] = percentage_change(df['2009'], df['2019'])
+    df['percentage_change'] = percentage_change(df[start_year], df[end_year])
 
-    fig = fig_bar(df, measure)
+    if measure != 'Län':
+        df = df.sort_values(by='percentage_change')
+        df = pd.concat([df.head(top), df.tail(top)])
+    return df
 
-    return html.Div([html.H2('Percentage change of all Län from 2009 to 2019'),
-                     dcc.Graph(figure=fig)])
+
+def percentage_change(col1, col2):
+    return ((col2 - col1) / col1) * 100
+
+
+def html_emission_excess(measure):
+    df = emission_excess(measure)
+
+    fig1 = ht.fig_line(df, 'Emissions', measure,
+                       labels={'Emissions': 'Emissions (tons)', 'Excess': 'Excess/Deficit'})
+    fig2 = ht.fig_line(df, 'Excess', measure)
+
+    return html.Div(id='div-emission-excess',
+                    children=[ht.dcc_dropdown('emission-excess',
+                                              measures, measure),
+                              dcc.Graph(figure=fig1),
+                              dcc.Graph(figure=fig2)])
+
+
+def html_emission_pecentage_change(measure):
+    df = emissions_pecentage_change(measure)
+
+    fig = ht.fig_bar(df, measure, x='percentage_change', labels={
+        'percentage_change': 'percentage_change (2009 -> 2019)'})
+    fig.update_layout(
+        yaxis={'categoryorder': 'total descending'}, height=800)
+    fig.update_yaxes(ticklabelposition='outside right')
+
+    return html.Div(id='div-emission-pecentage-change',
+                    children=[html.H2('Percentage change of all Län from 2009 to 2019'),
+                              ht.dcc_dropdown('emission-pecentage-change',
+                                              measures, measure),
+                              dcc.Graph(figure=fig)])
 
 
 layout = ht.layout(app_dir,
                    'Top co2 emitters',
-                   [get_emission_excess('Name'),
-                    get_emission_pecentage_change('Län')])
+                   [html_emission_excess('Name'),
+                    html_emission_pecentage_change('Län')])
 
 
 @ app.callback(
@@ -101,4 +93,13 @@ layout = ht.layout(app_dir,
 def update_emission_excess(selected_value):
     if selected_value is None:
         return dash.no_update
-    return get_emission_excess(selected_value)
+    return html_emission_excess(selected_value)
+
+
+@ app.callback(
+    Output('div-emission-pecentage-change', 'children'),
+    Input('dropdown-emission-pecentage-change', 'value'))
+def update_emission_excess(selected_value):
+    if selected_value is None:
+        return dash.no_update
+    return html_emission_pecentage_change(selected_value)
