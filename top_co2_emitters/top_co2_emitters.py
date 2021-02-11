@@ -61,9 +61,8 @@ def get_emission_excess(measure):
     title = measure + ' ' + suffix
     df = top_emissions_by_measure(measure)
 
-    fig1 = fig_line(df, 'Emissions', measure, labels={
-                    'Emissions': 'Emissions (tons)',
-                    'Excess', 'Excess/Deficit'})
+    fig1 = fig_line(df, 'Emissions', measure,
+                    labels={'Emissions': 'Emissions (tons)', 'Excess': 'Excess/Deficit'})
     fig2 = fig_line(df, 'Excess', measure)
 
     return html.Div(id='div-emission-excess',
