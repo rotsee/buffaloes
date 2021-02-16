@@ -75,7 +75,7 @@ def html_emission_pecentage_change(measure):
     fig.update_yaxes(ticklabelposition='outside right')
 
     return html.Div(id='div-emission-pecentage-change',
-                    children=[html.H2('Percentage change of all Län from 2009 to 2019'),
+                    children=[ht.html_heading('Percentage change of all Län from 2009 to 2019'),
                               ht.dcc_dropdown('emission-pecentage-change',
                                               measures, measure),
                               dcc.Graph(figure=fig)])

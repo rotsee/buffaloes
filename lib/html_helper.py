@@ -17,6 +17,10 @@ def html_title(title):
     return html.Div([html.H1(title)], style={'textAlign': 'center'})
 
 
+def html_heading(text):
+    return html.Div([html.H2(text), html.Br()], style={'textAlign': 'center'})
+
+
 def html_intro(text):
     return html.Div([dcc.Markdown(text)])
     # ,style={'textAlign': 'center'})
