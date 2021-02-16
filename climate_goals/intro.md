@@ -1,0 +1,1 @@
+Swedden has pledged to achieve zero net emissions of greenhouse gases by 2045. In other words, emissions from the Swedish territory are to be at least 85 percent lower in 2045 than they were 1990. The remaining 15 percent may be covered by carbon sinks or emission reductions abroad.

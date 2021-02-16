@@ -7,7 +7,7 @@ from dash.dependencies import Input, Output
 
 from app import app, server
 
-stories = ['top_co2_emitters', 'top_co2_emitters_2019', 'pulitzer']
+stories = ['climate_goals', 'top_co2_emitters', 'top_co2_emitters_2019']
 
 modules = [importlib.import_module(i + '.' + i) for i in stories]
 
