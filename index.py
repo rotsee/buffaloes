@@ -1,6 +1,7 @@
 import importlib
 import sys
 
+import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
@@ -14,11 +15,12 @@ modules = [importlib.import_module(i + '.' + i) for i in stories]
 
 def html_links():
     links = []
-    for i in stories:
-        links.append(dcc.Link(i, href='/' + i))
+    for s in stories:
+        name = s.replace('_', ' ').capitalize()
+        links.append(dbc.NavLink(name, href='/' + s, active='exact'))
         links.append(html.Br())
 
-    return html.Div(links)
+    return dbc.Navbar(dbc.Nav(links, pills=True))
 
 
 app.layout = html.Div([

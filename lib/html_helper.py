@@ -14,7 +14,7 @@ def get_project_root() -> Path:
 
 
 def html_title(title):
-    return html.Div([html.H1(title)], style={'textAlign': 'center'})
+    return html.Div([html.Br(), html.H1(title)], style={'textAlign': 'center'})
 
 
 def html_heading(text):

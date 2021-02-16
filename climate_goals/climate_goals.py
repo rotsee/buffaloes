@@ -39,9 +39,6 @@ def project(df, target_year, current_year, current_value, change):
 
         return project(df, target_year, current_year, current_value - abs(change) / 100 * current_value, change)
 
-# project(df, 2045, df.year.iat[-1], df.value.iat[-1])
-# project(df, 2030, df.year.iat[-1], df.domestic_transport.iat[-1], 8.5)
-
 
 def climate_goal_projection(measure='value', target=2045, target_value_max=10.7):
     df = df_pct_change
@@ -55,8 +52,14 @@ def climate_goal_projection(measure='value', target=2045, target_value_max=10.7)
 
     last = df.iloc[-1]
 
+    project_pct = abs(round(df['pct_change'].mean(), 1))
+    #project_val = project(df, 2045, df.year.iat[-1], df.value.iat[-1])
+
     fig.add_trace(go.Scatter(x=[last.year, target], y=[last.value, 38.3],
-                             name='1.1% reduction (current average)', line=dict(color=emission_color, dash='dash')))
+                             name=str(project_pct) +
+                             '% reduction (current average)',
+                             line=dict(color=emission_color, dash='dash')))
+
     fig.add_trace(go.Scatter(x=[last.year, target], y=[
         last.value, 0], name='6% reduction (offset needed)', line=dict(color='green', dash='dot')))
     fig.add_trace(go.Scatter(x=[last.year, target], y=[
@@ -85,13 +88,16 @@ def transport_goal_projection(measure='domestic_transport', target=2030, target_
     fig.update_traces(showlegend=False)
 
     last = df.iloc[-1]
-    fig.add_trace(go.Scatter(x=[last.year, target], y=[
-        last[measure], target_value_max], name='8.5% reduction', line=dict(color='green', dash='dot')))
 
     project_pct = abs(round(df['pct_change_domestic_transport'].mean(), 1))
 
+    # project_val = project(df, target, last.year, df.domestic_transport.iat[-1], 8.5) 14.5
+
     fig.add_trace(go.Scatter(x=[last.year, target], y=[last[measure], 14.5],
                              name=str(project_pct) + '% reduction (current average)', line=dict(color=emission_color, dash='dash')))
+
+    fig.add_trace(go.Scatter(x=[last.year, target], y=[
+        last[measure], target_value_max], name='8.5% reduction', line=dict(color='green', dash='dot')))
 
     tick_years = [2010, 2020, 2030]
     fig.update_layout(yaxis={'title': 'Emissions (M tons)'},
