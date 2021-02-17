@@ -10,10 +10,14 @@ from app import app, server
 
 stories = ['climate_goals', 'top_co2_emitters_2019', 'top_co2_emitters']
 
+
 modules = [importlib.import_module(i + '.' + i) for i in stories]
 
 
-def html_links():
+def navbar():
+    if len(stories) < 2:
+        return html.Br()
+
     links = []
     for s in stories:
         name = s.replace('_', ' ').capitalize()
@@ -27,7 +31,7 @@ app.layout = html.Div([
     # represents the URL bar, doesn't render anything
     dcc.Location(id='url', refresh=False),
 
-    html_links(),
+    navbar(),
 
     # content will be rendered in this element
     html.Div(id='page-content')
