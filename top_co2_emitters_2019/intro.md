@@ -1,0 +1,1 @@
+Here are the top 20 emitters of 2019 according to a [list](https://www.sverigesnatur.org/aktuellt/de-slappte-ut-mest-koldioxid-2019/) compiled by Svergies Natur. While SSAB, the top emitter, has a 14% share of the total national Emissions, the top 2 emitters together emit as much as the rest of the 18 emitters combined.
