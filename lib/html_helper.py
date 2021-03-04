@@ -14,7 +14,7 @@ def get_project_root() -> Path:
 
 
 def html_title(title):
-    return html.Div([html.Br(), html.H1(title)], style={'textAlign': 'center'})
+    return html.Div([html.H2(title)], style={'textAlign': 'center'})
 
 
 def html_heading(text):
@@ -42,10 +42,10 @@ def html_body(story, items):
     return html.Div(items)
 
 
-def layout(story, titte, items):
+def layout(story, titte, *items):
     return dbc.Container([
         html_title(titte),
-        html_body(story, items)])
+        html_body(story, list(items))])
 
 
 # px figure helpers
