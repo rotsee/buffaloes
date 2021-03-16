@@ -1,4 +1,8 @@
+https://buffaloes.herokuapp.com/
+
 ## development
+This is a dash app hosted on heroku. (It takes a few seconds to start up)
+
 
 ### To add a new story
 1. Create a folder under the project folder with the name of the story. Eg ```new_story```.
