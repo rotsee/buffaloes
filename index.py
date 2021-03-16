@@ -4,7 +4,10 @@ import sys
 import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 import dash_html_components as html
+import plotly.io as pio
 from dash.dependencies import Input, Output
+
+pio.templates.default = "plotly_white"
 
 from app import app, server
 
