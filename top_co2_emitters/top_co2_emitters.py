@@ -60,7 +60,7 @@ def html_emission_excess(measure):
 
     return html.Div(id='div-emission-excess',
                     children=[ht.dcc_dropdown('emission-excess',
-                                              measures, measure),
+                                              measures, measure, 'measure'),
                               dcc.Graph(figure=fig1),
                               dcc.Graph(figure=fig2)])
 
@@ -77,14 +77,14 @@ def html_emission_pecentage_change(measure):
     return html.Div(id='div-emission-pecentage-change',
                     children=[ht.html_heading('Percentage change of all Län from 2009 to 2019'),
                               ht.dcc_dropdown('emission-pecentage-change',
-                                              measures, measure),
+                                              measures, measure, 'measure'),
                               dcc.Graph(figure=fig)])
 
 
 layout = ht.layout(app_dir,
                    'Top co2 emitters',
-                   [html_emission_excess('Name'),
-                    html_emission_pecentage_change('Län')])
+                   html_emission_excess('Name'),
+                   html_emission_pecentage_change('Län'))
 
 
 @ app.callback(

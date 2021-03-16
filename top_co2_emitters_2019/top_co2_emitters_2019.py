@@ -8,6 +8,6 @@ app_dir = os.path.basename(os.path.dirname(__file__))
 
 layout = ht.layout(app_dir,
                    'Top co2 emitters in 2019',
-                   [html.Embed(
+                   html.Embed(
                        src='https://chart-studio.plotly.com/~papanash/9.embed',
-                       height="1000", width="100%")])
+                       height="1000", width="100%"))

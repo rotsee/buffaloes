@@ -110,5 +110,5 @@ def transport_goal_projection(measure='domestic_transport', target=2030, target_
 
 layout = ht.layout(app_dir,
                    'Can Sweden meet its climate goals?',
-                   [climate_goal_projection(),
-                    transport_goal_projection()])
+                   climate_goal_projection(),
+                   transport_goal_projection())

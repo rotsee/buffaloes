@@ -47,6 +47,26 @@ def layout(story, titte, *items):
         html_title(titte),
         html_body(story, list(items))])
 
+# dcc components helpers
+
+
+def dcc_dropdown(id_suffix, options, default_value=None, placeholder=None, **kw):
+    if placeholder is None:
+        placeholder = id_suffix
+
+    if type(options) is dict:
+        options = [{'label': k, 'value': v} for k, v in options.items()]
+    else:
+        options = [{'label': i, 'value': i} for i in options]
+
+    return dcc.Dropdown(
+        id='dropdown-' + id_suffix,
+        options=options,
+        placeholder='Select a ' + placeholder,
+        value=default_value,
+        style={'width': '50%'},
+        **kw)
+    # , 'display': 'flex','align - items': 'center', 'justify - content': 'center'})
 
 # px figure helpers
 
@@ -60,16 +80,3 @@ def fig_line(df, y, color, **kw):
 
 def fig_bar(df, y, **kw):
     return px.bar(df, y=y, hover_data=df.columns, **kw)
-
-# dcc components helpers
-
-
-def dcc_dropdown(id_suffix, options, default_value):
-    return dcc.Dropdown(
-        id='dropdown-' + id_suffix,
-        options=[{'label': i, 'value': i}
-                 for i in options],
-        placeholder='Select a ' + 'measure',
-        value=default_value,
-        style={'width': '50%'})
-    # , 'display': 'flex','align - items': 'center', 'justify - content': 'center'})
